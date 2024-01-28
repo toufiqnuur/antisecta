@@ -4,8 +4,7 @@ import {Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
 import {SvgXml} from 'react-native-svg';
 import CircleStat from './CircleStat';
-import {batteryXml, fluidXml} from './Icons';
-import {statXml} from '../../assets/icons/iconXml';
+import {batteryXml, fluidXml, statXml} from '../../assets/icons/iconXml';
 
 const screenWidth = Dimensions.get('window').width;
 
