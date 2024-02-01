@@ -1,21 +1,13 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 import HomeScreen from './src/routes/Home';
+import Header from './src/components/Header';
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? '#09090b' : '#f3f4f6',
-    flex: 1,
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
+    <SafeAreaView style={{flex: 1, backgroundColor: '#f4f4f5'}}>
+      <StatusBar barStyle="light-content" backgroundColor="#1d4ed8" />
+      <Header />
       <HomeScreen />
     </SafeAreaView>
   );

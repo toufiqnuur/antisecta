@@ -1,10 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  Dimensions,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
 import {SvgXml} from 'react-native-svg';
 import CircleStat from './CircleStat';
-import {batteryXml, fluidXml, statXml} from '../../assets/icons/iconXml';
+import {batteryXml, fluidXml} from '../../assets/icons/iconXml';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -40,11 +47,13 @@ export default function HomeScreen(): React.JSX.Element {
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
       <View style={{gap: 16, padding: 16}}>
-        <View style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
-          <SvgXml xml={statXml} width="20" height="20" />
-          <Text style={{fontWeight: '600', fontSize: 24, color: '#71717A'}}>
-            Report Summary
-          </Text>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={{color: '#737373'}}>Pembaruan terakhir: 05:30</Text>
+          <Pressable
+            onPress={() => null}
+            style={({pressed}) => [{opacity: pressed ? 0.5 : 1.0}]}>
+            <Text style={{color: '#3b82f6', fontWeight: '500'}}>Refresh</Text>
+          </Pressable>
         </View>
         <View style={{flexDirection: 'row', gap: 16}}>
           <View style={[widget.base, widget.square]}>
@@ -60,11 +69,21 @@ export default function HomeScreen(): React.JSX.Element {
             <View style={chart.body}>
               <SvgXml xml={fluidXml} width="20" height="20" />
               <Text style={chart.data}>90</Text>
-              <Text style={chart.label}>% battery</Text>
+              <Text style={chart.label}>% cairan</Text>
             </View>
           </View>
         </View>
         <View style={[widget.base]}>
+          <Text
+            style={{
+              marginTop: 16,
+              textAlign: 'center',
+              fontWeight: '500',
+              fontSize: 16,
+              color: '#000',
+            }}>
+            Presentase Hama
+          </Text>
           <PieChart
             data={dummy}
             width={screenWidth - 64}
@@ -74,6 +93,7 @@ export default function HomeScreen(): React.JSX.Element {
             backgroundColor={'transparent'}
             paddingLeft={'15'}
             center={[0, 0]}
+            absolute
           />
         </View>
       </View>
